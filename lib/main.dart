@@ -15,15 +15,6 @@ class AutomotiveMobileApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xFF141819),
         fontFamily: 'Inter',
-        textTheme: const TextTheme(
-          bodyLarge: TextStyle(color: Colors.white, fontSize: 25),
-          bodyMedium: TextStyle(color: Colors.white70, fontSize: 16),
-          headlineSmall: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 28,
-          ),
-        ),
       ),
       home: const MyHomePage(),
     );
@@ -38,37 +29,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  late final Flutter3DController _controller;
+  final Flutter3DController _controller = Flutter3DController();
+  List<String> availableAnimations = [];
 
   @override
   void initState() {
     super.initState();
-    _controller = Flutter3DController();
   }
 
   void _setIsometricView() {
-    // Set camera to an isometric angle
     _controller.setCameraOrbit(30, 70, 10);
     _controller.setCameraTarget(0.8, 0.5, 2);
   }
 
-  void _rotateLeft() {
-    _controller.setCameraOrbit(-90, 0, 5.0);
-  }
-
-  void _rotateRight() {
-    _controller.setCameraOrbit(90, 0, 5.0);
-  }
-
-  void _resetCamera() {
+  Future<void> _onModelLoaded(String src) async {
+    debugPrint('✅ Model loaded: $src');
     _setIsometricView();
-  }
-
-  void _playAnimation() {
-    _controller.playAnimation(
-      animationName: "Animation", // change to match your GLB animation name
-      loopCount: 1,
-    );
   }
 
   @override
@@ -95,41 +71,33 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Text('230 km', style: TextStyle(color: Colors.white70)),
               ),
             ),
-            const Divider(color: Color.fromARGB(255, 58, 58, 58)),
+            const Divider(
+              color: Color.fromARGB(255, 58, 58, 58),
+              thickness: 0.3,
+            ),
             const Text('Parked', style: TextStyle(color: Colors.white70)),
-
             Expanded(
               child: Flutter3DViewer(
                 controller: _controller,
-                src: 'assets/models/Escorttest.glb',
+                src: 'assets/models/EscortAnimationtest.glb',
                 enableTouch: false,
-                onLoad: (String src) {
-                  debugPrint('Model loaded: $src');
-                  _setIsometricView();
-                },
+                onLoad: _onModelLoaded,
               ),
             ),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: _rotateLeft,
-                  child: const Text('Rotate Left 90°'),
-                ),
-                const SizedBox(width: 20),
-                ElevatedButton(
-                  onPressed: _setIsometricView,
-                  child: const Text('Rotate Right 90°'),
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Wrap(
+                spacing: 8,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      _controller.playAnimation(animationName: 'left_door');
+                    },
+                    child: Text('sex'),
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: _playAnimation,
-              child: const Text('Play Animation'),
-            ),
-            const SizedBox(height: 10),
           ],
         ),
       ),
