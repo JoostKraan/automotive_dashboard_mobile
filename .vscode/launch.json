@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "automotive_dashboard_mobile",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/pages/main.dart"
+        },
+        {
+            "name": "automotive_dashboard_mobile (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "program": "lib/pages/main.dart"
+        },
+        {
+            "name": "automotive_dashboard_mobile (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "program": "lib/pages/main.dart"
+        }
+    ]
+}
