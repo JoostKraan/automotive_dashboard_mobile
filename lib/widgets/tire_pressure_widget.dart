@@ -64,12 +64,12 @@ class _AnimatedTirePressureComponent extends StatelessWidget {
       right: right,
       child: TweenAnimationBuilder<double>(
         tween: Tween<double>(begin: 0.8, end: isVisible ? 1.0 : 0.8),
-        duration: const Duration(milliseconds: 400),
+        duration: const Duration(milliseconds: 200),
         curve: Curves.easeOutBack,
         builder: (context, scale, child) {
           return AnimatedOpacity(
             opacity: isVisible ? 1.0 : 0.0,
-            duration: const Duration(milliseconds: 400),
+            duration: const Duration(milliseconds: 200),
             child: Transform.scale(scale: scale, child: child),
           );
         },

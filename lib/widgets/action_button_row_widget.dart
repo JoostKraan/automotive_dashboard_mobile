@@ -139,7 +139,9 @@ class _ActionButtonRowWidgetState extends State<ActionButtonRowWidget> {
             width: 380,
             height: 50,
             decoration: BoxDecoration(
-              color: const Color(0xFF222222),
+              color: tirePressureActive
+                  ? const Color(0xFF1E88E5)
+                  : const Color(0xFF222222), // Blue if active
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
                 color: const Color.fromARGB(255, 20, 20, 20),
