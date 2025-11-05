@@ -235,28 +235,11 @@ class _CarMapState extends State<CarMap> {
       print('Location permission denied');
     }
 
-    pointAnnotationManager = await map.annotations
-        .createPointAnnotationManager();
-
-    await _addCarMarker();
-
     if (mounted) {
       setState(() {
         _isMapReady = true;
       });
     }
-  }
-
-  Future<void> _addCarMarker() async {
-    if (pointAnnotationManager == null) return;
-
-    final pointAnnotationOptions = PointAnnotationOptions(
-      geometry: Point(coordinates: Position(longitude, latitude)),
-      iconSize: 1.5,
-      iconImage: "car",
-    );
-
-    await pointAnnotationManager!.create(pointAnnotationOptions);
   }
 
   Future<void> _recenterCamera() async {
