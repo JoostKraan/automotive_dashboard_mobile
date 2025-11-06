@@ -1,5 +1,5 @@
 import 'package:automotive_dashboard_mobile/controllers/camera_controller.dart';
-import 'package:automotive_dashboard_mobile/layout/3d_carmodel_widget.dart';
+import 'package:automotive_dashboard_mobile/layout/3d_environment_layout.dart';
 import 'package:automotive_dashboard_mobile/widgets/action_button_row_widget.dart';
 import 'package:automotive_dashboard_mobile/widgets/car_stats_widget.dart';
 import 'package:automotive_dashboard_mobile/widgets/top_bar_widget.dart';

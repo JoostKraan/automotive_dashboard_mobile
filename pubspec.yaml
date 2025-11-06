@@ -67,6 +67,7 @@ dev_dependencies:
 flutter:
     assets:
         - assets/models/
+        - assets/models/Seperatedescort.glb
         - .env
 
     # The following line ensures that the Material Icons font is
