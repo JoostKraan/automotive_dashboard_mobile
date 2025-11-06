@@ -1,5 +1,5 @@
 name: automotive_dashboard_mobile
-description: "A new Flutter project."
+description: 'A new Flutter project.'
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.9.2
+    sdk: ^3.9.2
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -28,63 +28,68 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  flutter:
-    sdk: flutter
+    flutter:
+        sdk: flutter
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.8
-  flutter_3d_controller: ^2.3.0
-  mapbox_maps_flutter: ^2.0.0
-  flutter_dotenv: ^6.0.0
-  geolocator: ^14.0.2
-  permission_handler: ^12.0.1
+    # The following adds the Cupertino Icons font to your application.
+    # Use with the CupertinoIcons class for iOS style icons.
+    cupertino_icons: ^1.0.8
+    flutter_3d_controller: ^2.3.0
+    mapbox_maps_flutter: ^2.0.0
+    flutter_dotenv: ^6.0.0
+    geolocator: ^14.0.2
+    permission_handler: ^12.0.1
+    three_js: ^0.2.5
+    dtd: ^4.0.0
+    flutter_lints: ^6.0.0
+    google_fonts: ^6.3.2
+    json_rpc_2: ^4.0.0
+    path: ^1.9.1
+    stack_trace: ^1.12.1
+    url_launcher: ^6.3.2
+    web: ^1.1.1
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
+    flutter_test:
+        sdk: flutter
 
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
-  flutter_lints: ^5.0.0
+    # The "flutter_lints" package below contains a set of recommended lints to
+    # encourage good coding practices. The lint set provided by the package is
+    # activated in the `analysis_options.yaml` file located at the root of your
+    # package. See that file for information about deactivating specific lint
+    # rules and activating additional ones.
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:
-  assets:
-    - assets/models/
-    - .env
-  
+    assets:
+        - assets/models/
+        - .env
 
-  
+    # The following line ensures that the Material Icons font is
+    # included with your application, so that you can use the icons in
+    # the material Icons class.
+    uses-material-design: true
 
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
-  uses-material-design: true
+    # To add assets to your application, add an assets section, like this:
 
-  # To add assets to your application, add an assets section, like this:
+    # An image asset can refer to one or more resolution-specific "variants", see
+    # https://flutter.dev/to/resolution-aware-images
 
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/to/resolution-aware-images
+    # For details regarding adding assets from package dependencies, see
+    # https://flutter.dev/to/asset-from-package
 
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/to/asset-from-package
+    # To add custom fonts to your application, add a fonts section here,
+    # in this "flutter" section. Each entry in this list should have a
+    # "family" key with the font family name, and a "fonts" key with a
+    # list giving the asset and other descriptors for the font. For
+    # example:
+    fonts:
+        - family: Inter
+          fonts:
+              - asset: assets/fonts/Inter-VariableFont_opsz,wght.ttf
 
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  fonts:
-    - family: Inter
-      fonts:
-        - asset: assets/fonts/Inter-VariableFont_opsz,wght.ttf
-  
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/to/font-from-package
+    # For details regarding fonts from package dependencies,
+    # see https://flutter.dev/to/font-from-package

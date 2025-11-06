@@ -1,3 +1,4 @@
+import 'package:automotive_dashboard_mobile/widgets/main_widgets/3d_model_viewer_widget.dart';
 import 'package:automotive_dashboard_mobile/widgets/tire_pressure_component_widget.dart';
 import 'package:automotive_dashboard_mobile/widgets/tire_pressure_widget.dart';
 import 'package:flutter/material.dart';
@@ -31,13 +32,14 @@ class _CarModelWidgetState extends State<CarModelWidget> {
       width: 500,
       child: Stack(
         children: [
-          Flutter3DViewer(
-            controller: widget.controller,
-            src: 'assets/models/escortwheelturntest.glb',
-            enableTouch: false,
-            onLoad: _onModelLoaded,
-          ),
-          TirePressureWidget(),
+          // Flutter3DViewer(
+          //   controller: widget.controller,
+          //   src: 'assets/models/escortwheelturntest.glb',
+          //   enableTouch: false,
+          //   onLoad: _onModelLoaded,
+          // ),
+          ModelViewerWidget(),
+          //TirePressureWidget(),
         ],
       ),
     );
