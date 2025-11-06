@@ -1,11 +1,13 @@
+import 'package:automotive_dashboard_mobile/controllers/camera_controller.dart';
 import 'package:automotive_dashboard_mobile/widgets/3d_carmodel_widget.dart';
-import 'package:automotive_dashboard_mobile/widgets/action_button_row_widget.dart';
+import 'package:automotive_dashboard_mobile/widgets/main_widgets/action_button_row_widget.dart';
 import 'package:automotive_dashboard_mobile/widgets/car_stats_widget.dart';
 import 'package:automotive_dashboard_mobile/widgets/top_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_3d_controller/flutter_3d_controller.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
+import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,7 +17,12 @@ Future<void> main() async {
     throw Exception('Error loading .env file: $e');
   }
   MapboxOptions.setAccessToken(dotenv.env["MAPBOX_TOKEN"]!);
-  runApp(const AutomotiveMobileApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => CameraController(),
+      child: const AutomotiveMobileApp(),
+    ),
+  );
 }
 
 class AutomotiveMobileApp extends StatelessWidget {
@@ -57,7 +64,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final Flutter3DController _controller = Flutter3DController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,10 +74,10 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               TopBarWidget(),
               Divider(color: Color.fromARGB(255, 58, 58, 58), thickness: 0.3),
-              CarModelWidget(controller: _controller),
+              CarModelWidget(),
               Divider(color: Color.fromARGB(255, 58, 58, 58), thickness: 0.3),
               CarStatsWidget(),
-              ActionButtonRowWidget(controller: _controller),
+              ActionButtonRowWidget(),
             ],
           ),
         ),

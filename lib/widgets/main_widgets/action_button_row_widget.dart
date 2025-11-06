@@ -1,11 +1,12 @@
+import 'package:automotive_dashboard_mobile/controllers/camera_controller.dart';
 import 'package:automotive_dashboard_mobile/pages/map.dart';
 import 'package:automotive_dashboard_mobile/widgets/tire_pressure_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_3d_controller/flutter_3d_controller.dart';
+import 'package:provider/provider.dart';
+import 'package:three_js/three_js.dart' show Vector3;
 
 class ActionButtonRowWidget extends StatefulWidget {
-  const ActionButtonRowWidget({super.key, required this.controller});
-  final Flutter3DController controller;
+  const ActionButtonRowWidget({super.key});
 
   @override
   State<ActionButtonRowWidget> createState() => _ActionButtonRowWidgetState();
@@ -13,20 +14,17 @@ class ActionButtonRowWidget extends StatefulWidget {
 
 class _ActionButtonRowWidgetState extends State<ActionButtonRowWidget> {
   bool tirePressureActive = false;
-
   void _showTirePressure() {
-    widget.controller.setCameraOrbit(180.0, 0, 0);
-    Future.delayed(const Duration(milliseconds: 100), () {
-      widget.controller.setCameraTarget(0, 2.8, -1.2);
-    });
+    final cameraController = context.read<CameraController>(); //
+    cameraController.camera?.position?.setValues(0, 10, -7);
+    cameraController.camera?.lookAt(Vector3(0, 1, 0));
+
     Future.delayed(const Duration(milliseconds: 300), () {
       toggleTirePressureVisibility(true);
     });
   }
 
   void _setIsometricView() {
-    widget.controller.setCameraOrbit(30, 70, 10);
-    widget.controller.setCameraTarget(0.8, 1, 2);
     toggleTirePressureVisibility(false);
   }
 

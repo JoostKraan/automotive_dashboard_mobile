@@ -1,4 +1,6 @@
+import 'package:automotive_dashboard_mobile/controllers/camera_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:three_js/three_js.dart' as three;
 
 class ModelViewerWidget extends StatefulWidget {
@@ -37,11 +39,20 @@ class _ModelViewerWidgetState extends State<ModelViewerWidget> {
     );
   }
 
+  void changeCameraAngle(double x, double y, double z) {
+    setState(() {
+      threeJs.camera.position.setValues(x, y, z);
+    });
+  }
+
   Future<void> setup() async {
+    final cameraController = context.read<CameraController>();
     // Camera
     threeJs.camera = three.PerspectiveCamera(25, 300 / 225, 0.1, 2000);
     threeJs.camera.position.setValues(cameraX, cameraY, cameraZ);
     threeJs.camera.lookAt(three.Vector3(0, 0.7, 0.56));
+
+    cameraController.setCamera(threeJs.camera);
 
     // Scene
     threeJs.scene = three.Scene();
